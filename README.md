@@ -51,6 +51,7 @@ node scripts/verify.mjs        # 离线闭环验收（临时目录，不污染�
 ```
 
 > 仓库中 `Agent Memory Hub/` 是默认 Vault 根（可用 `config/projects.json` 的 `vault_root` 调整）。
+> 仓库不随附正式记忆、候选、索引记录或事件日志；这些运行时数据在本机生成。
 
 ## 核心概念
 
