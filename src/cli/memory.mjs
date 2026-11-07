@@ -457,6 +457,22 @@ function cmdReviewApprove(id, flags) {
 function cmdReviewReject(id, flags) {
   const candidate = readCandidate(id);
   if (!candidate) fail(`候选不存在：${id}`);
+
+  // 保护 1：已晋升的候选不能拒绝（vault 中已存在同 ID 正式记忆）
+  const promoted = get(id);
+  if (promoted) {
+    fail(
+      `候选已晋升，不能拒绝：${id}`,
+      ['该候选已审核通过并生成正式记忆；如需撤销请走 validity/supersedes 流程，不通过 reject'],
+      { id },
+    );
+  }
+
+  // 保护 2：已拒绝的候选不重复处理（幂等）
+  if (candidate.status === 'rejected') {
+    fail(`候选已拒绝，无需重复：${id}`, ['如需重审请先明确恢复候选状态'], { id });
+  }
+
   const reason = String(flags.reason || '').trim();
   if (!reason) throw new Error('review reject 需要 --reason 说明原因');
   const reviewer = String(flags.reviewer || 'me').trim() || 'me';

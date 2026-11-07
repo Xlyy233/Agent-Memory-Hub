@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '..');
 const cliPath = path.join(repoRoot, 'src', 'cli', 'memory.mjs');
-const totalSteps = 6;
+const totalSteps = 7;
 
 let currentStep = 0;
 
@@ -263,6 +263,51 @@ function main() {
     assertEq(invalidData.ok, false, '存在非法记录时 validate 应返回 ok=false');
     assertIncludes(JSON.stringify(invalidData.errors), 'sources', 'validate 应指出 sources 缺失');
     console.log('        ok：合法 exit 0，非法候选 exit 1');
+
+    // ---------- 7. reject 保护 ----------
+    section(7, 'reject 保护：已晋升拦截 / 正常拒绝 / 重复拒绝拦截');
+    const rejectPromoted = run(['review', 'reject', id, '--reason', '测试已晋升保护', '--json']);
+    assertEq(rejectPromoted.code, 1, '已晋升候选 reject 应以 1 退出');
+    assertIncludes(rejectPromoted.stdout, '已晋升', '错误信息应说明已晋升');
+    const promotedCandidate = JSON.parse(fs.readFileSync(candidatePath, 'utf8'));
+    assertEq(promotedCandidate.status, 'pending', '已晋升候选状态应保持 pending');
+
+    const candidate2 = {
+      project_id: 'shared',
+      type: 'fact',
+      title: 'AMH 验收：reject 保护测试',
+      statement: '用于验证正常 reject 与重复 reject 保护。',
+      scope: 'AMH Phase 1 离线验收',
+      tags: ['amh-verify', 'reject-protection'],
+      evidence_kind: 'user-confirmed',
+      evidence_result: 'passed',
+      sources: [
+        { kind: 'file', path: 'D:\\Agent Memory Hub\\README.md', hash: 'sha256:verify' },
+      ],
+      body: '## 主张\n\n拒绝保护验收。\n',
+    };
+    const candidateFile2 = path.join(root, 'candidate-2.json');
+    fs.writeFileSync(candidateFile2, JSON.stringify(candidate2, null, 2), 'utf8');
+    const add2 = parseJson(run(['candidate', 'add', '--file', candidateFile2, '--json']));
+    const id2 = String(add2.id || '');
+    assert(id2, '第二个候选应返回 id');
+
+    const eventsPath = path.join(root, 'logs', 'events.jsonl');
+    const countEvents = () => (fs.existsSync(eventsPath)
+      ? fs.readFileSync(eventsPath, 'utf8').split('\n').filter(Boolean).length
+      : 0);
+    const eventsBefore = countEvents();
+
+    const reject1 = run(['review', 'reject', id2, '--reason', '测试正常拒绝', '--json']);
+    assertEq(reject1.code, 0, `正常候选 reject 应以 0 退出\n    stderr：${reject1.stderr}`);
+    const eventsAfterFirst = countEvents();
+    assertEq(eventsAfterFirst, eventsBefore + 1, '正常 reject 应追加 1 条事件');
+
+    const reject2 = run(['review', 'reject', id2, '--reason', '重复拒绝', '--json']);
+    assertEq(reject2.code, 1, '重复 reject 应以 1 退出');
+    assertIncludes(reject2.stdout, '已拒绝', '错误信息应说明已拒绝');
+    assertEq(countEvents(), eventsAfterFirst, '重复 reject 不应追加事件');
+    console.log('        ok：已晋升拦截 / 正常 reject / 重复 reject 拦截');
 
     passed = true;
   } catch (err) {
