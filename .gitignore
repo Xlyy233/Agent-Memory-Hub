@@ -9,6 +9,17 @@ temp/
 .DS_Store
 Thumbs.db
 
-# 可重建索引的机器副本（保留 state/index.json 供 CLI 使用；
-# 若未来改用生成式索引，可取消下面的注释）
-# state/index.json
+# ===== 运行时数据（本地生成，不同步到 GitHub）=====
+# 正式记忆、候选、索引记录、事件日志只保留在本机
+Agent Memory Hub/00-索引/
+Agent Memory Hub/10-通用/
+Agent Memory Hub/20-项目/
+inbox/candidates/*.json
+logs/
+state/
+docs/项目记忆建档审阅清单-*.md
+
+# Obsidian 界面状态（会话级，无同步价值）
+Agent Memory Hub/.obsidian/graph.json
+Agent Memory Hub/.obsidian/workspace.json
+

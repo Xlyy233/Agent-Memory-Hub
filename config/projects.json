@@ -12,6 +12,12 @@
       "vault_dir": "20-项目/EQDM",
       "repo": "D:\\test\\EQDM_ProMax",
       "description": "Phase 1 试点项目（只读来源，白名单采集）"
+    },
+    "XJOA": {
+      "name": "XJOA 数字化协同平台",
+      "vault_dir": "20-项目/XJOA",
+      "repo": "D:/test/XJOA",
+      "description": "项目记忆建档；只读来源、文件快照溯源、候选经人工审核后入库"
     }
   }
 }
