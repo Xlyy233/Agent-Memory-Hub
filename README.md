@@ -136,4 +136,4 @@ sources:
 
 ## License
 
-许可证待定。
+[MIT](LICENSE) © 2026 Xlyy233
