@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "vault_root": "Agent Memory Hub",
+  "projects": {
+    "shared": {
+      "name": "通用",
+      "vault_dir": "10-通用",
+      "description": "跨 agent、跨项目共享的工程经验、环境事实与工作流约定"
+    },
+    "EQDM": {
+      "name": "EQDM 设备管理系统",
+      "vault_dir": "20-项目/EQDM",
+      "repo": "D:\\test\\EQDM_ProMax",
+      "description": "Phase 1 试点项目（只读来源，白名单采集）"
+    }
+  }
+}

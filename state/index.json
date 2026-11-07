@@ -1,0 +1,166 @@
+{
+  "generated_at": "2026-11-07T13:15:40.567Z",
+  "records": [
+    {
+      "id": "cand-20261107-EQDM-0001",
+      "project_id": "EQDM",
+      "type": "fact",
+      "title": "EQDM 仓库位置与 Git 基线（2026-11-07）",
+      "status": "approved",
+      "validity": "current",
+      "archived": false,
+      "scope": "EQDM 项目基线；HEAD 变化或提交未提交文件后复核。",
+      "tags": [
+        "EQDM",
+        "Git",
+        "基线"
+      ],
+      "file": "20-项目/EQDM/architecture/cand-20261107-EQDM-0001.md",
+      "updated_at": "2026-11-07T13:01:51.588Z"
+    },
+    {
+      "id": "cand-20261107-EQDM-0002",
+      "project_id": "EQDM",
+      "type": "architecture",
+      "title": "EQDM 技术栈",
+      "status": "approved",
+      "validity": "current",
+      "archived": false,
+      "scope": "EQDM 项目；依赖升级或模块拆分后复核。",
+      "tags": [
+        "EQDM",
+        "技术栈",
+        "架构"
+      ],
+      "file": "20-项目/EQDM/architecture/cand-20261107-EQDM-0002.md",
+      "updated_at": "2026-11-07T13:01:51.723Z"
+    },
+    {
+      "id": "cand-20261107-EQDM-0003",
+      "project_id": "EQDM",
+      "type": "question",
+      "title": "EQDM 未提交修改与未跟踪文件待处置",
+      "status": "approved",
+      "validity": "current",
+      "archived": false,
+      "scope": "EQDM 采集白名单决策；确认前不采集。",
+      "tags": [
+        "EQDM",
+        "待确认",
+        "未提交",
+        "白名单"
+      ],
+      "file": "20-项目/EQDM/questions/cand-20261107-EQDM-0003.md",
+      "updated_at": "2026-11-07T13:01:51.838Z"
+    },
+    {
+      "id": "cand-20261107-shared-0001",
+      "project_id": "shared",
+      "type": "fact",
+      "title": "AMH 本机运行环境基线",
+      "status": "approved",
+      "validity": "current",
+      "archived": false,
+      "scope": "AMH 项目全部本地运行；Node 大版本升级或迁移工具目录时复核。",
+      "tags": [
+        "环境",
+        "Node",
+        "Obsidian",
+        "基线"
+      ],
+      "file": "10-通用/architecture/cand-20261107-shared-0001.md",
+      "updated_at": "2026-11-07T12:58:25.682Z"
+    },
+    {
+      "id": "cand-20261107-shared-0002",
+      "project_id": "shared",
+      "type": "decision",
+      "title": "AMH 项目根与 Obsidian Vault 根分离",
+      "status": "approved",
+      "validity": "current",
+      "archived": false,
+      "scope": "AMH 全项目；迁移 Vault 或改 Obsidian 配置前复核。",
+      "tags": [
+        "架构决策",
+        "Vault",
+        "Obsidian",
+        "路径"
+      ],
+      "file": "10-通用/decisions/cand-20261107-shared-0002.md",
+      "updated_at": "2026-11-07T13:01:51.272Z"
+    },
+    {
+      "id": "cand-20261107-shared-0003",
+      "project_id": "shared",
+      "type": "fact",
+      "title": "本机 AI Agent 共同工作约定（任务评估/授权/Loop/验收）",
+      "status": "approved",
+      "validity": "current",
+      "archived": false,
+      "scope": "本机全部 AI agent；新 agent 接入时引用指针而非复制正文。",
+      "tags": [
+        "工作流约定",
+        "AGENTS.md",
+        "授权",
+        "修复Loop",
+        "验收"
+      ],
+      "file": "10-通用/architecture/cand-20261107-shared-0003.md",
+      "updated_at": "2026-11-07T13:01:51.371Z"
+    },
+    {
+      "id": "cand-20261107-shared-0004",
+      "project_id": "shared",
+      "type": "fact",
+      "title": "Node.js 运行时路径依附 Claude 工具目录",
+      "status": "approved",
+      "validity": "current",
+      "archived": false,
+      "scope": "本机全部依赖 Node 的 Agent；移动 Claude 工具目录前复核。",
+      "tags": [
+        "环境",
+        "Node",
+        "风险",
+        "路径"
+      ],
+      "file": "10-通用/architecture/cand-20261107-shared-0004.md",
+      "updated_at": "2026-11-07T13:01:51.478Z"
+    },
+    {
+      "id": "cand-20261107-shared-0005",
+      "project_id": "shared",
+      "type": "decision",
+      "title": "AMH 入口指针策略：项目级优先 + 防注入硬约束",
+      "status": "approved",
+      "validity": "current",
+      "archived": false,
+      "scope": "AMH 全部入口指针；换 agent 或迁移项目根时复核。",
+      "tags": [
+        "入口指针",
+        "AGENTS.md",
+        "防注入",
+        "项目级"
+      ],
+      "file": "10-通用/decisions/cand-20261107-shared-0005.md",
+      "updated_at": "2026-11-07T13:07:31.847Z"
+    },
+    {
+      "id": "cand-20261107-shared-0006",
+      "project_id": "shared",
+      "type": "verification",
+      "title": "入口指针首次验证：Codex 新会话通过检索，但需区分只读命令授权",
+      "status": "approved",
+      "validity": "current",
+      "archived": false,
+      "scope": "AMH 入口指针与检索方式；修改指针文本后需重新验证。",
+      "tags": [
+        "验证",
+        "入口指针",
+        "Codex",
+        "授权边界"
+      ],
+      "file": "10-通用/verification/cand-20261107-shared-0006.md",
+      "updated_at": "2026-11-07T13:15:40.563Z"
+    }
+  ]
+}

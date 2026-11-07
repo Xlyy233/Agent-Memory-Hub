@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "cand-20261107-shared-0004",
+  "project_id": "shared",
+  "type": "fact",
+  "title": "Node.js 运行时路径依附 Claude 工具目录",
+  "statement": "本机 Node.js v24.18.0 位于 D:\\tools\\AI\\claude\\node-portable\\node.exe，依附于 Claude 工具目录；若该目录被移动或清理，AMH 与需要 Node 的 Agent 都会受影响。",
+  "status": "pending",
+  "evidence_kind": "runtime-verified",
+  "evidence_result": "passed",
+  "validity": "current",
+  "archived": false,
+  "scope": "本机全部依赖 Node 的 Agent；移动 Claude 工具目录前复核。",
+  "tags": [
+    "环境",
+    "Node",
+    "风险",
+    "路径"
+  ],
+  "sources": [
+    {
+      "kind": "command",
+      "command": "Get-Command node",
+      "cwd": "D:\\Agent Memory Hub",
+      "executed_at": "2026-11-07T21:00:00+08:00",
+      "exit_code": 0,
+      "environment": "Windows 10.0.26300.0"
+    },
+    {
+      "kind": "doc",
+      "locator": "D:\\Agent Memory Hub\\AMH-Phase-0-环境审计报告-2026-11-07.md",
+      "fetched_at": "2026-11-07T18:25:00+08:00"
+    }
+  ],
+  "created_at": "2026-11-07T21:00:58+08:00",
+  "updated_at": "2026-11-07T13:01:50.872Z",
+  "body": "## 主张\n\n本机 Node.js 运行时路径为 `D:\\tools\\AI\\claude\\node-portable\\node.exe`（v24.18.0），依附于 Claude 工具目录，而非独立安装。\n\n风险：该目录被移动、升级或清理时，AMH 与依赖 Node 的 Agent 可能失效。建议后续将控制器运行时固定到独立路径。\n\n## 证据\n\n- `Get-Command node` 返回上述路径（2026-11-07 21:00，exit 0）。\n- Phase 0 报告记录同一路径，并标注「推测：未来若该工具被移动或清理，AMH 可能受影响」。\n\n## 适用范围\n\n本机全部依赖 Node 的 Agent 与工具。移动或清理 Claude 工具目录前应复核。"
+}

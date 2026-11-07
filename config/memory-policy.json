@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "default_search": {
+    "status": ["approved"],
+    "validity": ["current"],
+    "archived": false
+  },
+  "require_sources": true,
+  "require_human_approval": true,
+  "allowed_source_kinds": ["git", "command", "file", "user-statement", "doc"],
+  "external_send": {
+    "enabled": false,
+    "targets": {}
+  },
+  "candidate_retention_days": 30,
+  "notes": "Phase 1：不调用任何云模型；external_send 全部关闭；候选必须人工审核后才生成正式记忆。"
+}

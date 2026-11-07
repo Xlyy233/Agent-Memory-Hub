@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "cand-20261107-shared-0002",
+  "project_id": "shared",
+  "type": "decision",
+  "title": "AMH 项目根与 Obsidian Vault 根分离",
+  "statement": "AMH 项目根为 D:\\Agent Memory Hub（代码、配置、状态、候选区），正式记忆库为嵌套的 Obsidian vault D:\\Agent Memory Hub\\Agent Memory Hub；不为整齐而迁移或修改 Obsidian 配置，Controller 状态与笔记分离。",
+  "status": "pending",
+  "evidence_kind": "user-confirmed",
+  "evidence_result": "passed",
+  "validity": "current",
+  "archived": false,
+  "scope": "AMH 全项目；迁移 Vault 或改 Obsidian 配置前复核。",
+  "tags": [
+    "架构决策",
+    "Vault",
+    "Obsidian",
+    "路径"
+  ],
+  "sources": [
+    {
+      "kind": "user-statement",
+      "statement": "保留 D:\\Agent Memory Hub 下的嵌套 Obsidian vault，不迁移",
+      "confirmed_at": "2026-11-07T20:30:00+08:00",
+      "reference": "2026-11-07 AMH 设计对照讨论"
+    },
+    {
+      "kind": "doc",
+      "locator": "D:\\Agent Memory Hub\\Agent Memory Hub\\AMH-设计对照与待决项-2026-11-07.md",
+      "fetched_at": "2026-11-07T20:30:00+08:00"
+    }
+  ],
+  "created_at": "2026-11-07T21:00:58+08:00",
+  "updated_at": "2026-11-07T13:01:50.658Z",
+  "body": "## 主张\n\nAMH 采用「项目根 + 嵌套 Vault」结构：\n\n- 项目根 `D:\\Agent Memory Hub`：`src/`、`config/`、`state/`、`logs/`、`inbox/`\n- Vault 根 `D:\\Agent Memory Hub\\Agent Memory Hub`：正式记忆、模板、`_meta`、索引\n\n不为整齐而迁移 Vault 或修改 Obsidian 配置。\n\n## 证据\n\n- 用户于 2026-11-07 明确选择「保留现有嵌套 Vault」（Codex Phase 0 审计后确认）。\n- 该结论记录于《AMH 设计对照与待决项-2026-11-07.md》第 3 节。\n\n## 适用范围\n\nAMH 全项目。迁移 Vault 位置或调整 Obsidian 配置前需重新评估。"
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "cand-20261107-shared-0001",
+  "project_id": "shared",
+  "type": "fact",
+  "title": "AMH 本机运行环境基线",
+  "statement": "AMH Phase 1 在本机以 Node.js v24.18.0 运行、零外部依赖；项目根为 D:\\Agent Memory Hub，正式记忆库为 Obsidian vault（嵌套目录 Agent Memory Hub）。",
+  "status": "pending",
+  "evidence_kind": "runtime-verified",
+  "evidence_result": "passed",
+  "validity": "current",
+  "archived": false,
+  "scope": "AMH 项目全部本地运行；Node 大版本升级或迁移工具目录时复核。",
+  "tags": [
+    "环境",
+    "Node",
+    "Obsidian",
+    "基线"
+  ],
+  "sources": [
+    {
+      "kind": "command",
+      "command": "node --version",
+      "cwd": "D:\\Agent Memory Hub",
+      "executed_at": "2026-11-07T20:55:00+08:00",
+      "exit_code": 0,
+      "environment": "Windows 10.0.26300.0"
+    },
+    {
+      "kind": "doc",
+      "locator": "D:\\Agent Memory Hub\\AMH-Phase-0-环境审计报告-2026-11-07.md",
+      "fetched_at": "2026-11-07T18:25:00+08:00"
+    }
+  ],
+  "created_at": "2026-11-07T20:57:00+08:00",
+  "updated_at": "2026-11-07T12:58:25.582Z",
+  "body": "## 主张\n\nAMH Phase 1 的本机运行基线：Node.js v24.18.0、零外部依赖；项目根 `D:\\Agent Memory Hub`；正式记忆库为 Obsidian vault（嵌套目录 `D:\\Agent Memory Hub\\Agent Memory Hub`），索引与模板在 vault 内，代码与状态在项目根。\n\n## 证据\n\n- `node --version` 返回 v24.18.0（工作目录 `D:\\Agent Memory Hub`，exit 0）。\n- Phase 0 审计报告确认该 Node 位于 `D:\\tools\\AI\\claude\\node-portable\\node.exe`，并确认 Obsidian vault 路径。\n\n## 适用范围\n\nAMH 项目全部本地运行。Node 大版本升级、迁移机器或移动工具目录时需复核。"
+}
